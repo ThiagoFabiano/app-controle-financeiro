@@ -1,6 +1,8 @@
-# app_controle_financeiro
+# App Controle Financeiro
 
-A new Flutter project.
+App para controle financeiro pessoal. Inclui autenticação e banco de dados através do Firebase. Permite separar gastos por categoria, visualizar graficos dentre outros.
+
+Criado com a finalizade de progredir nos estudos em Flutter
 
 ## Getting Started
 
