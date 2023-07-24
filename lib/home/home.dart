@@ -106,7 +106,7 @@ class _HomeState extends State<Home> {
             width: MediaQuery.of(context).size.width,
             height: 100,
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: Color.fromRGBO(240, 240, 240, 1),
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               boxShadow: [
@@ -121,56 +121,90 @@ class _HomeState extends State<Home> {
             child: Padding(
               padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
               child: Column(children: [
-                Container(
-                  height: 45,
-                  width: 250,
-                  decoration:const BoxDecoration(
-                    boxShadow:  [
-                      BoxShadow(
-                        color: Colors.black12,
-                        spreadRadius: 0,
-                        blurRadius: 15,
-                        offset: Offset(1, 5),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Recentes',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.primary,
+                            fontSize: 23),
                       ),
-                    ],
-                  ),
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.resolveWith<Color?>(
-                          (Set<MaterialState> states) {
-                            if (states.contains(MaterialState.pressed)) {
-                              return Theme.of(context)
-                                  .colorScheme
-                                  .primary
-                                  .withOpacity(0.7);
-                            }
-                            return Theme.of(context)
-                                .colorScheme
-                                .primary; // Use the component's default.
-                          },
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'ver todos',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.secondary,
+                              fontSize: 15),
                         ),
                       ),
-                      onPressed: () {},
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 25,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'Nova Despesa',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
+                    ]),
+                Expanded(
+                  child: Container(
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      padding: const EdgeInsets.only(top: 8),
+                      child: ListView.separated(
+                        separatorBuilder: (context, index) {
+                          return Divider();
+                        },
+                        padding: const EdgeInsets.all(0),
+                        itemCount: 15,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            leading: Container(
+                              padding: EdgeInsets.all(3),
+                              decoration: BoxDecoration(
+                                  color: const Color.fromARGB(27, 0, 0, 0),
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Icon(
+                                Icons.local_taxi,
+                                size: 40,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
                             ),
-                          )
-                        ],
+                            title: Text(
+                              'Transporte',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontSize: 20),
+                            ),
+                            subtitle: const Padding(
+                              padding: EdgeInsets.only(top: 8.0),
+                              child: Text(
+                                'Uber para o trabalho',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15),
+                              ),
+                            ),
+                            trailing: const Column(
+                              children: [
+                                Text(
+                                  '-R\$ 50,00',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 230, 82, 28),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 8.0),
+                                  child: Text(
+                                    '1 de Ago.',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromARGB(129, 0, 0, 0),
+                                        fontSize: 15),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
                       )),
                 )
               ]),
@@ -194,25 +228,55 @@ class _HomeState extends State<Home> {
               ),
             ],
           ),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Disponível',
                 style: TextStyle(
                     color: Color.fromARGB(125, 255, 255, 255),
                     fontSize: 24,
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(
-                width: 50,
+              const SizedBox(
+                width: 20,
               ),
-              Text(
+              const Text(
                 'R\$ 05,00',
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 24,
                     fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                width: 40,
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  color: Colors.blueGrey,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      spreadRadius: 0,
+                      blurRadius: 15,
+                      offset: Offset(1, 5),
+                    ),
+                  ],
+                ),
+                child: TextButton(
+                  onPressed: () {},
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
