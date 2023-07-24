@@ -1,5 +1,7 @@
 // ignore_for_file: empty_constructor_bodies
 
+import 'package:app_controle_financeiro/home/home_app_bar.dart';
+import 'package:app_controle_financeiro/home/home_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'home.controller.dart';
@@ -22,76 +24,7 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         extendBody: true,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(125),
-          child: AppBar(
-              backgroundColor: Colors.transparent,
-              /* title: const Text(
-              'Finance',
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-            ), */
-              centerTitle: true,
-              flexibleSpace: Padding(
-                padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'R\$ 10.000,00',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                                fontSize: 30),
-                          ),
-                          Text(
-                            'Alterar exibição',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(119, 255, 255, 255),
-                                fontSize: 15),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 60,
-                      width: 60,
-                      alignment: Alignment.center,
-                      decoration: const BoxDecoration(
-                          color: Color.fromARGB(255, 214, 214, 214),
-                          shape: BoxShape.circle),
-                      child: const Icon(Icons.person, size: 35),
-                    )
-                  ],
-                ),
-              ),
-              bottom: const PreferredSize(
-                preferredSize: Size.fromHeight(50),
-                child: Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: TabBar(
-                    indicatorColor: Colors.white,
-                    labelColor: Colors.white,
-                    unselectedLabelColor: Colors.white70,
-                    dividerColor: Colors.transparent,
-                    tabs: <Widget>[
-                      Tab(
-                        text: 'Geral',
-                      ),
-                      Tab(
-                        text: 'Categorias',
-                      ),
-                    ],
-                  ),
-                ),
-              )),
-        ),
+        appBar: HomeAppBar(),
         body: Container(
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
@@ -150,7 +83,7 @@ class _HomeState extends State<Home> {
                       padding: const EdgeInsets.only(top: 8),
                       child: ListView.separated(
                         separatorBuilder: (context, index) {
-                          return Divider();
+                          return  const Divider();
                         },
                         padding: const EdgeInsets.all(0),
                         itemCount: 15,
@@ -211,76 +144,7 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
-        bottomNavigationBar: Container(
-          height: 70,
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.secondary,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
-            boxShadow: const [
-              BoxShadow(
-                color: Color.fromARGB(221, 0, 0, 0),
-                spreadRadius: 0.1,
-                blurRadius: 8,
-                offset: Offset(0, 2),
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Disponível',
-                style: TextStyle(
-                    color: Color.fromARGB(125, 255, 255, 255),
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                width: 20,
-              ),
-              const Text(
-                'R\$ 05,00',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                width: 40,
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  color: Colors.blueGrey,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                      spreadRadius: 0,
-                      blurRadius: 15,
-                      offset: Offset(1, 5),
-                    ),
-                  ],
-                ),
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.add,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+        bottomNavigationBar: HomeBottomBar()
       ),
     );
   }
